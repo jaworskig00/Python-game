@@ -1,0 +1,38 @@
+import random
+
+playersNumber = input("Enter the number of players: ")
+playersNumber = int(playersNumber)
+nick = ""
+scoreboard = []
+index = 0
+
+while playersNumber > 0:
+    nick = input("Enter your nick: ")
+    howManyGuesses = 0
+    num = 0
+    randomNumber = random.randint(1, 100)
+    print("I've chosen random number between 1 and 100. Try to guess it")
+    while num != randomNumber:
+
+        howManyGuesses += 1
+        numStr = input("Enter number: ")
+        if numStr.isdigit() is False:
+            continue
+
+        num = int(numStr)
+
+        if num > randomNumber:
+            print("Your number is too large")
+        elif num < randomNumber:
+            print("Your number is too small")
+
+    print("Congratulation " + nick + ", the number was %d, you've guessed it in %d guesses\n"
+          % (randomNumber, howManyGuesses))
+    scoreboard.append(nick + " " + str(howManyGuesses))
+    playersNumber -= 1
+
+playerId = 0
+print("Players:\n")
+for line in scoreboard:
+    id += 1
+    print(str(playerId) + ". " + line)
